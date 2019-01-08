@@ -12,7 +12,6 @@
                <th scope="col"></th>
                <th scope="col">Storage</th>
                <th scope="col">Name</th>
-               <th scope="col">Datasheet</th>
                <th scope="col">Category</th>
                <th scope="col">Subcategory</th>
                <th scope="col">Package</th>
@@ -34,12 +33,12 @@
                <td></td>
                @endif
                <td>{{ $entry->storage['name'] }}</td>
-               <td>{{ $entry->name }}</td>
+               <td><p>{{ $entry->name }}</p>
                @empty($entry->datasheet)
-               <td></td>
                @else
-               <td><a class="btn btn-primary" href="{{ $entry->datasheet }}">Link</a></td>
+               <a class="btn btn-primary btn-sm" href="{{ $entry->datasheet }}">Datasheet</a>
                @endempty
+               </td>
                <td>{{ $entry->category }}</td>
                <td>{{ $entry->subcategory }}</td>
                <td>{{ $entry->package }}</td>
@@ -54,7 +53,7 @@
                      @csrf
                      <input type="hidden" name="stock" value="+1" />
                      <input type="hidden" name="_method" value="put" />
-                     <input class="btn btn-primary" type="submit" value="+" />
+                     <input class="btn btn-primary btn-sm" type="submit" value="+" />
                      <br/>
                   </form>
                </td>
@@ -63,7 +62,7 @@
                      @csrf
                      <input type="hidden" name="stock" value="-1" />
                      <input type="hidden" name="_method" value="put" />
-                     <input class="btn btn-primary" type="submit" value="-" />
+                     <input class="btn btn-primary btn-sm" type="submit" value="-" />
                      <br/>
                   </form>
                </td>
@@ -71,7 +70,7 @@
                <td></td>
                <td></td>
                @endif
-               <td><a class="btn btn-primary" href="/components/{{ $entry->id }}">Edit</a></td>
+               <td><a class="btn btn-primary btn-sm" href="/components/{{ $entry->id }}">Edit</a></td>
             </tr>
             @endforeach
          </tbody> 
