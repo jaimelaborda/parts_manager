@@ -17,8 +17,6 @@ class Component extends Model
     use \Spatie\Tags\HasTags;
     use Searchable;
 
-    public $asYouType = true;
-
     public $casts = [
         'extra_attributes' => 'array',
     ];
