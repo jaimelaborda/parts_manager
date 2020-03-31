@@ -1,0 +1,37 @@
+version: '3.1'
+
+services:
+
+  parts_manager:
+    image: berkutta/parts_manager
+    ports:
+      - 8080:80
+    environment:
+      APP_KEY: base64:MGrJqE4HL/BZwwDPrxHarRJvJvj6SU1vz1D0oide7i8=
+      DB_CONNETCTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: parts_manager
+      DB_USERNAME: root
+      DB_PASSWORD: qwerty
+    volumes:
+      - ~/.env:/var/www/html/.env
+    links:
+      - mysql:mysql
+    depends_on:
+      - mysql
+
+
+  mysql: 
+    image: mysql:5.7
+    #ports:
+    # - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: qwerty
+      MYSQL_DATABASE: parts_manager
+      MYSQL_USER: parts_manager
+      MYSQL_PASSWORD: parts_manager
+    volumes:
+      - ~/mysql:/var/lib/mysql
+
+        
